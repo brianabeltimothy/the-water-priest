@@ -21,12 +21,10 @@ public class Rotate : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                Debug.Log("rightkey works");
                 StartCoroutine(RotateWheel(60.0f));
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                Debug.Log("left key works");
                 StartCoroutine(RotateWheel(-60.0f));
             }
         }
@@ -51,11 +49,21 @@ public class Rotate : MonoBehaviour
 
         coroutineAllowed = true;
 
-        numberShown += 1;
-
-        if (numberShown > 6)
+        if(rotateDirection > 0)
         {
-            numberShown = 1;
+            numberShown += 1;
+
+            if (numberShown > 6)
+            {
+                numberShown = 1;
+            }
+        }
+        else{
+            numberShown -= 1;
+            if (numberShown < 1)
+            {
+                numberShown = 6;
+            }
         }
 
         Rotated(name, numberShown);
