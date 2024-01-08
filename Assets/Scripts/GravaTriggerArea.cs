@@ -11,8 +11,11 @@ public class GravaTriggerArea : MonoBehaviour
         {
             if(GameEvents.currentObjective == GameEvents.ObjectiveState.MeetGrava)
             {
+                if(!DialogueManager.isActive)
+                { 
+                    trigger.StartDialogue();
+                }
                 GameEvents.current.StartMeetGrava();
-                trigger.StartDialogue();
             }
         }
     }

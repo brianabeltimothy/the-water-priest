@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class HintTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public DialogueTrigger trigger;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider collision)
     {
-        
+        if (collision.gameObject.CompareTag("Player") && !DialogueManager.isActive)
+        {
+            trigger.StartDialogue();
+        }
     }
 }

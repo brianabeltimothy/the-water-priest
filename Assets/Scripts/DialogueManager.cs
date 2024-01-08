@@ -87,6 +87,14 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void FinishLine()
+    {
+        Debug.Log("activeDialogue: " + activeDialogue);
+        activeDialogue = currentDialogues.Length + 1;
+        dialogueText.text = string.Empty;
+        isActive = false;
+    }
+
     public void NextLine()
     {
         activeDialogue++;

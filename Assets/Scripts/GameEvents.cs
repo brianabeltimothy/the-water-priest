@@ -12,6 +12,8 @@ public class GameEvents : MonoBehaviour
         MeetGrava,
         MeetReinard2,
         MeetZaniyah,
+        ExploreCatacombs,
+        GetToTheBoat,
         ReachedBoat
     }
 
@@ -43,6 +45,12 @@ public class GameEvents : MonoBehaviour
                 currentObjective = ObjectiveState.MeetZaniyah;
                 break;
             case ObjectiveState.MeetZaniyah:
+                currentObjective = ObjectiveState.ExploreCatacombs;
+                break;
+            case ObjectiveState.ExploreCatacombs:
+                currentObjective = ObjectiveState.GetToTheBoat;
+                break;
+            case ObjectiveState.GetToTheBoat:
                 currentObjective = ObjectiveState.ReachedBoat;
                 break;
             case ObjectiveState.ReachedBoat:

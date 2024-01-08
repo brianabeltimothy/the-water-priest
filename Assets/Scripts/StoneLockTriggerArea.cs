@@ -33,15 +33,20 @@ public class StoneLockTriggerArea : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 interactText.text = "Press 'Esc' to exit";
+
                 DisablePlayerInputScript(player);
-                StartCoroutine(ChangeCameraPosition());
                 DisableCameraScript(camera);
+
+                StartCoroutine(ChangeCameraPosition());
+
                 puzzleStoneControllerScript.enabled = true;
                 disableInputMagnitudeChange = true;
             }
 
             if(Input.GetKeyDown(KeyCode.Escape))
             {
+                interactText.text = "Press 'E' to Interact";
+
                 if(!player.GetComponent<vThirdPersonInput>().enabled)
                 {
                     player.GetComponent<vThirdPersonInput>().enabled = true;
@@ -50,8 +55,11 @@ public class StoneLockTriggerArea : MonoBehaviour
                 {
                     camera.GetComponent<vThirdPersonCamera>().enabled = true;
                 }
-                interactText.text = "Press 'E' to Interact";
+
+                //stop selection highlight
                 puzzleStoneControllerScript.wheelControllers[puzzleStoneControllerScript.previousWheelId].GetComponent<Renderer>().material.color =  puzzleStoneControllerScript.originalColour;
+                
+                //change animation to idle
                 disableInputMagnitudeChange = false;
                 puzzleStoneControllerScript.enabled = false;
             }
